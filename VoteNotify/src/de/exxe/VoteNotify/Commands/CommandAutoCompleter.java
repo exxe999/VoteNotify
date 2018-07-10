@@ -50,7 +50,6 @@ public class CommandAutoCompleter implements TabCompleter {
                 		l.add("toggle");
                 	}
                 }              
-
         }
        
         else if(args.length == 1) {
