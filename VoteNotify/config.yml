@@ -1,0 +1,23 @@
+#           configuration file VoteNotify
+#                     by exxe
+#                      V1.3
+#      Here you can do a lot of stuff! Nice!
+# -duration data in ticks
+# -timer in minutes, how often player gets notified
+# -link starts with http://
+
+general:
+   servername: "dem Server"
+   votelink: "http://google.com" 
+   enabled: true
+notification:
+   votemessage: "&cDu hast heute noch nicht gevotet!"
+   notifymessage: "&7&oDu wurdest benachrichtigt."
+   timer: 20
+   toggleallow: true
+notifybuff:
+   slownessduration: 20
+   jumpduration: 20
+    
+    
+    

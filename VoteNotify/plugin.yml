@@ -1,0 +1,13 @@
+name: VoteNotify
+main: de.exxe.VoteNotify.Main.Main
+version: 1.4
+author: exxe
+permissions: 
+    votenotify.admin:
+depends: [Votifier]
+commands:
+    votenotify:
+        aliases: [vn]
+permissions:
+    votenotify.admin:
+        default: false
