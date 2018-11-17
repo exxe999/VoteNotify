@@ -10,6 +10,7 @@ general:
    servername: "dem Server"
    votelink: "http://google.com" 
    enabled: true
+   activeIpControl: true
 notification:
    votemessage: "&cDu hast heute noch nicht gevotet!"
    notifymessage: "&7&oDu wurdest benachrichtigt."

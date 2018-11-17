@@ -17,13 +17,13 @@ private Main plugin;
 	
 	public void toggle(Player p) {
 		String uuid = p.getUniqueId().toString();
-		List<String> list = getList();
-		if(list.contains(uuid)) {
-			list.remove(uuid);
+		List<String> voteList = getList();
+		if(voteList.contains(uuid)) {
+			voteList.remove(uuid);
 		}else {
-			list.add(uuid);
+			voteList.add(uuid);
 		}
-		plugin.getCustomConfig().get().set("toggleList", list);
+		plugin.getCustomConfig().get().set("toggleList", voteList);
 		plugin.getCustomConfig().saveConfig();
 	}
 	
@@ -31,13 +31,13 @@ private Main plugin;
 		String uuid = p.getUniqueId().toString();
 		try {
 			@SuppressWarnings("unused")
-			List<String> list = plugin.getCustomConfig().get().getStringList("toggleList");
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("toggleList");
 		} catch (Exception e) {
 			return false;
 		}
-		List<String> list = plugin.getCustomConfig().get().getStringList("toggleList");
-		if(list.isEmpty()) return false;
-		if(list.contains(uuid)) return true;
+		List<String> voteList = plugin.getCustomConfig().get().getStringList("toggleList");
+		if(voteList.isEmpty()) return false;
+		if(voteList.contains(uuid)) return true;
 		return false;
 
 	}
@@ -46,22 +46,22 @@ private Main plugin;
 		String uuid = p.getUniqueId().toString();
 		try {
 			@SuppressWarnings("unused")
-			List<String> list = plugin.getCustomConfig().get().getStringList("toggleList");
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("toggleList");
 		} catch (Exception e) {
 			return;
 		}
-		List<String> list = plugin.getCustomConfig().get().getStringList("toggleList");
-		list.remove(uuid);
+		List<String> voteList = plugin.getCustomConfig().get().getStringList("toggleList");
+		voteList.remove(uuid);
 		
 	}
 	
 	public List<String> getList(){
 		try {
-			List<String> list = plugin.getCustomConfig().get().getStringList("toggleList");
-			return list;
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("toggleList");
+			return voteList;
 		} catch (Exception e) {
-			List<String> list = new ArrayList<>();
-			return list;
+			List<String> voteList = new ArrayList<>();
+			return voteList;
 		}
 	}
 

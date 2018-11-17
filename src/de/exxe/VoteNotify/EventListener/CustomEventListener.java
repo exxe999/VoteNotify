@@ -1,4 +1,4 @@
-package de.exxe.VoteNotify.CustomVoteListener;
+package de.exxe.VoteNotify.EventListener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -26,7 +26,7 @@ public class CustomEventListener implements Listener {
 	@EventHandler(priority=EventPriority.NORMAL)
     public void onVotifierEvent(VotifierEvent event) {
         Vote vote = event.getVote();
-        System.out.println(vote.getTimeStamp());
+        System.out.println(vote.getAddress());
         if(!Bukkit.getOnlinePlayers().toString().toUpperCase().contains(vote.getUsername())) {
         	OfflinePlayer p = Bukkit.getOfflinePlayer(vote.getUsername());
         	voteListHandler.add(p);

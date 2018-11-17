@@ -19,16 +19,16 @@ public class VoteListHandler {
 	public void add(Player p) {
 		String uuid = p.getUniqueId().toString();
 		try {
-			List<String> list = plugin.getCustomConfig().get().getStringList("voteList");
-			if(list.contains(uuid)) return;
-			list.add(uuid);
-			plugin.getCustomConfig().get().set("voteList", list);
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("voteList");
+			if(voteList.contains(uuid)) return;
+			voteList.add(uuid);
+			plugin.getCustomConfig().get().set("voteList", voteList);
 			plugin.getCustomConfig().saveConfig();
 		} catch (Exception e) {
-			List<String> list = new ArrayList<>();
-			if(list.contains(uuid)) return;
-			list.add(uuid);
-			plugin.getCustomConfig().get().set("voteList", list);
+			List<String> voteList = new ArrayList<>();
+			if(voteList.contains(uuid)) return;
+			voteList.add(uuid);
+			plugin.getCustomConfig().get().set("voteList", voteList);
 			plugin.getCustomConfig().saveConfig();
 		}
 	}
@@ -36,16 +36,16 @@ public class VoteListHandler {
 	public void add(OfflinePlayer p) {
 		String uuid = p.getUniqueId().toString();
 		try {
-			List<String> list = plugin.getCustomConfig().get().getStringList("voteList");
-			if(list.contains(uuid)) return;
-			list.add(uuid);
-			plugin.getCustomConfig().get().set("voteList", list);
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("voteList");
+			if(voteList.contains(uuid)) return;
+			voteList.add(uuid);
+			plugin.getCustomConfig().get().set("voteList", voteList);
 			plugin.getCustomConfig().saveConfig();
 		} catch (Exception e) {
-			List<String> list = new ArrayList<>();
-			if(list.contains(uuid)) return;
-			list.add(uuid);
-			plugin.getCustomConfig().get().set("voteList", list);
+			List<String> voteList = new ArrayList<>();
+			if(voteList.contains(uuid)) return;
+			voteList.add(uuid);
+			plugin.getCustomConfig().get().set("voteList", voteList);
 			plugin.getCustomConfig().saveConfig();
 		}
 	}
@@ -54,13 +54,13 @@ public class VoteListHandler {
 		String uuid = p.getUniqueId().toString();
 		try {
 			@SuppressWarnings("unused")
-			List<String> list = plugin.getCustomConfig().get().getStringList("voteList");
+			List<String> voteList = plugin.getCustomConfig().get().getStringList("voteList");
 		} catch (Exception e) {
 			return false;
 		}
-		List<String> list = plugin.getCustomConfig().get().getStringList("voteList");
-		if(list.isEmpty()) return false;
-		if(list.contains(uuid)) return true;
+		List<String> voteList = plugin.getCustomConfig().get().getStringList("voteList");
+		if(voteList.isEmpty()) return false;
+		if(voteList.contains(uuid)) return true;
 		
 		return false;
 

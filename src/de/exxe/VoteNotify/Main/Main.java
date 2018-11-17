@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import de.exxe.VoteNotify.Commands.CommandAutoCompleter;
 import de.exxe.VoteNotify.Commands.Commands;
 import de.exxe.VoteNotify.CustomConfig.CustomConfig;
-import de.exxe.VoteNotify.CustomVoteListener.CustomEventListener;
+import de.exxe.VoteNotify.EventListener.CustomEventListener;
 import de.exxe.VoteNotify.Lists.ToggleListHandler;
 import de.exxe.VoteNotify.Lists.VoteListHandler;
 import de.exxe.VoteNotify.Notifier.Notifier;
@@ -25,11 +25,11 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		
-		voteList = new CustomConfig(this);
 		notifier = new Notifier(this);
 		voteListHandler = new VoteListHandler(this);
 		toggleListHandler = new ToggleListHandler(this);
 		int timer = this.getConfig().getInt("notification.timer");
+		voteList = new CustomConfig(this);
 	
 		getCommand("votenotify").setExecutor(new Commands(this, notifier));
 		getCommand("votenotify").setTabCompleter(new CommandAutoCompleter(this));

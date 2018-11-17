@@ -209,6 +209,12 @@ public class Commands implements CommandExecutor {
 						return true;
 					}
 				}
+				if(args[0].equalsIgnoreCase("test")) {
+					System.out.println(senderPlayer.getAddress().getAddress().getHostAddress());
+					System.out.println(senderPlayer.getAddress().getAddress());
+					System.out.println(senderPlayer.getAddress().getHostString());
+					System.out.println(senderPlayer.getAddress().getHostName());
+				}
 			}	
 		}
 		if(senderPlayer.hasPermission("votenotify.admin")) {

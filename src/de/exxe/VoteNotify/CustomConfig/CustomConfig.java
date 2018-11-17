@@ -20,6 +20,7 @@ public class CustomConfig {
 			try {
 				f.createNewFile();
 				} catch (IOException e) {
+					System.err.println("[VOTENOTIFY] RESTART THE SERVER TO FIX THIS PROBLEM!!!");
 					e.printStackTrace();
 				}
 	}
