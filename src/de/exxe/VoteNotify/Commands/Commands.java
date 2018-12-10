@@ -23,7 +23,7 @@ public class Commands implements CommandExecutor {
 	private ToggleListHandler toggleListHandler;
 	private boolean toggleallow;
 	private String servername;
-	private Logger log;
+	private Logger logger;
 
 	public Commands(Main main, Notifier notifier) {
 		this.main = main;
@@ -32,7 +32,7 @@ public class Commands implements CommandExecutor {
 		toggleListHandler = new ToggleListHandler(main);
 		toggleallow = main.getConfig().getBoolean("notification.toggleallow");
 		servername = main.getConfig().getString("general.servername");
-		log = main.getLogger();
+		logger = main.getLogger();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class Commands implements CommandExecutor {
 							senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&6Allen Spielern wurde eine Votebenachrichtigung geschickt."));
 							return true;
 						}else {
-							log.info("Notifications are currently disabled!!");
+							logger.info("Notifications are currently disabled!!");
 							senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&cBenachrichtigungen sind deaktiviert! &b/votenotify toggleall"));
 							return true;
 						}
@@ -144,29 +144,35 @@ public class Commands implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("list")) {
 					if(senderPlayer.hasPermission("votenotify.admin")) {
 						String onlineList = "";
-						int votes = 0;
+						int voteCount = 0;
 						Collection<? extends Player> online = Bukkit.getOnlinePlayers();
 						Player[] onlinearray = online.toArray(new Player[online.size()]);
+						int onlineCount = onlinearray.length;
 						for(int i = 0; i < onlinearray.length; i++) {
 							Player onlinePlayer = onlinearray[i].getPlayer();
 							if(voteListHandler.contains(onlinePlayer)) {
 								onlineList += (ChatColor.GREEN + "[\u2714]");
-								votes++;
+								voteCount++;
 							}else {
 								onlineList += (ChatColor.RED + "[\u2718]");
 							}
-							onlineList += (onlinePlayer.getDisplayName() + ", ");
-							if(onlineList.length() > 30) {
-								onlineList += "\n";
-							}
+							onlineList += (onlinePlayer.getDisplayName() + ", \n");
 						}
-						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&c" + onlinearray.length +" &6Spieler sind online. &c" + votes + " &6haben schon gevotet."));
-						senderPlayer.sendMessage(onlineList.substring(0, onlineList.length() -2));
+						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&c" + onlineCount +" &6Spieler sind online. &c" + (onlineCount - voteCount) + " &6haben noch nicht gevotet."));
+						senderPlayer.sendMessage(onlineList.substring(0, onlineList.length() -3));
 						return true;
 					}else {
 						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&4Du hast keinen Zugriff auf diesen Befehl!"));
 						return true;
 					}
+				}
+				if(args[0].equalsIgnoreCase("test")) {
+					senderPlayer.sendMessage("test");
+					System.out.println(senderPlayer.getAddress().getAddress().getHostAddress());
+					System.out.println(senderPlayer.getAddress().getAddress());
+					System.out.println(senderPlayer.getAddress().getHostString());
+					System.out.println(senderPlayer.getAddress().getHostName());
+					return true;
 				}
 			}
 			if(args.length == 2) {
@@ -208,12 +214,6 @@ public class Commands implements CommandExecutor {
 						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&4Du hast keinen Zugriff auf diesen Befehl!"));
 						return true;
 					}
-				}
-				if(args[0].equalsIgnoreCase("test")) {
-					System.out.println(senderPlayer.getAddress().getAddress().getHostAddress());
-					System.out.println(senderPlayer.getAddress().getAddress());
-					System.out.println(senderPlayer.getAddress().getHostString());
-					System.out.println(senderPlayer.getAddress().getHostName());
 				}
 			}	
 		}

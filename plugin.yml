@@ -1,6 +1,6 @@
 name: VoteNotify
 main: de.exxe.VoteNotify.Main.Main
-version: 1.6
+version: 1.7
 author: exxe
 permissions: 
     votenotify.admin:
