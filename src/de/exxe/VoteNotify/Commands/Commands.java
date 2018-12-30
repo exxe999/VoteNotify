@@ -144,10 +144,10 @@ public class Commands implements CommandExecutor {
 				if(args[0].equalsIgnoreCase("list")) {
 					if(senderPlayer.hasPermission("votenotify.admin")) {
 						String onlineList = "";
-						int voteCount = 0;
+						double voteCount = 0.0;
 						Collection<? extends Player> online = Bukkit.getOnlinePlayers();
 						Player[] onlinearray = online.toArray(new Player[online.size()]);
-						int onlineCount = onlinearray.length;
+						double onlineCount = (double) onlinearray.length;
 						for(int i = 0; i < onlinearray.length; i++) {
 							Player onlinePlayer = onlinearray[i].getPlayer();
 							if(voteListHandler.contains(onlinePlayer)) {
@@ -158,7 +158,7 @@ public class Commands implements CommandExecutor {
 							}
 							onlineList += (onlinePlayer.getDisplayName() + ", \n");
 						}
-						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&c" + onlineCount +" &6Spieler sind online. &c" + (onlineCount - voteCount) + " &6haben noch nicht gevotet."));
+						senderPlayer.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&',"&c" + (int)onlineCount +" &6Spieler sind online. &c" + (int) (voteCount/onlineCount * 100.0) + "% &6haben gevotet."));
 						senderPlayer.sendMessage(onlineList.substring(0, onlineList.length() -3));
 						return true;
 					}else {
